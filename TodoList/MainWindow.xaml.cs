@@ -46,9 +46,6 @@ namespace TodoList
                 });
                 InputTextBox.Clear();
             }
-            else
-            {
-            }
         }
         private void InputTextBox_KeyDown(object sender, KeyEventArgs e)
         {
