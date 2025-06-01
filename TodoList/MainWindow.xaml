@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TodoList"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
 
         <!-- ヘッダー部 -->
@@ -56,14 +56,29 @@
                   HeadersVisibility="Column"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
-                  Margin="5">
+                  Margin="5"
+                      FontSize="30">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="タスク"  
                                     Binding="{Binding Title}" 
                                     Width="*"/>
                     <DataGridCheckBoxColumn Header="完了"  
-                                        Binding="{Binding IsCompleted}" 
-                                        Width="100"/>
+                                            Binding="{Binding IsCompleted}">
+                        <DataGridCheckBoxColumn.ElementStyle>
+                            <Style TargetType="CheckBox">
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="HorizontalAlignment"
+                                        Value="Center"/>
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center"/>
+                            </Style>
+                        </DataGridCheckBoxColumn.ElementStyle>
+                       
+                    </DataGridCheckBoxColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
