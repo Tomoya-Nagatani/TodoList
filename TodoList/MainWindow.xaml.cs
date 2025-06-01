@@ -42,7 +42,6 @@ namespace TodoList
                 {
                     Title = title,
                     IsCompleted = false,
-
                 });
                 InputTextBox.Clear();
             }
