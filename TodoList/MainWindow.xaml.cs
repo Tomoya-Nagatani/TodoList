@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace TodoList
 {
@@ -21,16 +11,16 @@ namespace TodoList
     /// </summary>
     public partial class MainWindow : Window
     {
-        // TodoItemオブジェクトをリストとして持ち、UIに通知させるコレクション
-        // イメージ: content, isCompletedなどの情報を1行ずつタスクデータとして管理するリスト = これなら通常のListでも可能
-        // 今回はTodoアプリなので追加・削除するので変更を通知させる必要があり、適しているのがこのリスト型
+        // TodoItemオブジェクトをリストとして持ち、UIに変更を通知する必要があるため、
+        // 通常の List<T> ではなく ObservableCollection<T> を使用している。
+        // ※ ObservableCollection はコレクションの追加・削除時にUIへ通知できる
         private ObservableCollection<TodoItem> todoItems = new ObservableCollection<TodoItem>();
 
         public MainWindow()
         {
             InitializeComponent();
-            // ItemsSource: DataGridコントロールのプロパティで、DataGridに表示させるデータを設定できる
-            // 今回だとTodoItemモデルのオブジェクト
+            // ItemsSource: DataGridコントロールにデータを表示させるためのプロパティ
+            // 今回は TodoItem のリストをバインドし、各項目（Title/IsCompleted）を表示
             TodoDataGrid.ItemsSource = todoItems;
         }
 
